@@ -4,7 +4,9 @@
   "description": "Handlebars templating",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"build": "handlebars views/partials/post.handlebars -f public/postTemplate.js",
+	"prestart": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/osu-cs290-f22/template-assignment-5#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6"
   }
 }
