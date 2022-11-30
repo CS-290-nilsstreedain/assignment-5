@@ -22,7 +22,15 @@ app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
 app.get('/', function (req, res, next) {
-	res.status(200).render('postsPage', postData)
+	res.status(200).render('postsPage', postData);
+});
+
+app.get('/posts/:n', function (req, res, next) {
+	if ((req.params.n >= 0) && (req.params.n <= postData.length - 1)) {
+		res.status(200).render('partials/post', postData[req.params.n]);
+	} else {
+		res.status(404).render('404');
+	}
 });
 
 app.get('*', function (req, res) {
